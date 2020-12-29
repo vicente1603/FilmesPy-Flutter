@@ -5,7 +5,6 @@ import 'package:http/http.dart' as http;
 const API_KEY = "19f5325275524d1d4f39fcb8c06a1761";
 
 class MovieService {
-  String _search;
 
   static Future<List<MovieModel>> getMovies() async {
     try {
@@ -25,31 +24,6 @@ class MovieService {
       }
     } catch (e) {
       print(e);
-    }
-  }
-
-  Future<List<MovieModel>> search(String search) async {
-    _search = search;
-
-    http.Response response = await http.get(
-        "https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1");
-
-    if (response.statusCode == 200) {
-      var decoded = json.decode(response.body);
-
-      List<MovieModel> movies = (decoded["filmes"] as List)
-          .map((i) => new MovieModel.fromJson(i))
-          .toList();
-
-      if (_search == null) {
-        return movies;
-      } else {
-        List<MovieModel> result =
-            movies.where((movie) => movie.titulo.contains(search)).toList();
-        return result;
-      }
-    } else {
-      throw Exception("Fail");
     }
   }
 }

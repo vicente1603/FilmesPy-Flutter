@@ -19,8 +19,8 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'FlutterMovies',
           theme: ThemeData(
-            primarySwatch: Colors.blue,
-            primaryColor: Colors.lightBlue[800],
+            primarySwatch: Colors.green,
+            primaryColor: Colors.green[400],
             visualDensity: VisualDensity.adaptivePlatformDensity,
           ),
           home: Home(),

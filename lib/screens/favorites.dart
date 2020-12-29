@@ -1,8 +1,8 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_movies/blocs/favorite_bloc.dart';
-import 'package:flutter_movies/models/movie_model.dart';
 
+import '../blocs/favorite_bloc.dart';
+import '../models/movie_model.dart';
 import 'movie_detail.dart';
 
 class Favorites extends StatelessWidget {
@@ -16,7 +16,7 @@ class Favorites extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Theme.of(context).primaryColor,
       ),
-      backgroundColor: Colors.lightBlue[200],
+      backgroundColor: Colors.green[200],
       body: StreamBuilder<Map<String, MovieModel>>(
         stream: bloc.outFav,
         initialData: {},

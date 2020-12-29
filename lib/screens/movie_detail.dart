@@ -9,7 +9,7 @@ class MovieDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightBlue[200],
+      backgroundColor: Colors.green[200],
       appBar: AppBar(
         title: Text("Detalhes do filme"),
         elevation: 0,

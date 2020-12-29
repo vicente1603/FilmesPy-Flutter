@@ -10,9 +10,6 @@ class MoviesBloc implements BlocBase {
 
   final StreamController<List<MovieModel>> _moviesController =
       StreamController<List<MovieModel>>.broadcast();
-  //
-  // final _moviesController =
-  // BehaviorSubject<List<MovieDetailModel>>(seedValue: {});
 
   Stream get outMovies => _moviesController.stream;
 
@@ -28,7 +25,6 @@ class MoviesBloc implements BlocBase {
 
   void _search(String search) async {
     _moviesController.sink.add([]);
-    movies = await api.search(search);
     _moviesController.sink.add(movies);
   }
 

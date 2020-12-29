@@ -2,12 +2,8 @@ import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_movies/blocs/favorite_bloc.dart';
-import 'package:flutter_movies/blocs/movies_bloc.dart';
 import 'package:flutter_movies/models/movie_model.dart';
-import 'package:flutter_movies/models/movie_model.dart';
-import 'package:flutter_movies/screens/movie_results.dart';
 import 'package:flutter_movies/services/movies_service.dart';
-import 'package:flutter_movies/widgets/movie_search.dart';
 import 'package:flutter_movies/widgets/movie_tile.dart';
 
 import 'favorites.dart';
@@ -17,7 +13,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Flutter Movies"),
+        title: Text("Filmes PY", style: TextStyle(color: Colors.white)),
         elevation: 0,
         backgroundColor: Theme.of(context).primaryColor,
         actions: <Widget>[
@@ -27,7 +23,10 @@ class Home extends StatelessWidget {
               stream: BlocProvider.of<FavoriteBloc>(context).outFav,
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
-                  return Text(snapshot.data.length.toString());
+                  return Text(
+                    snapshot.data.length.toString(),
+                    style: TextStyle(color: Colors.white),
+                  );
                 } else {
                   return Container();
                 }
@@ -45,25 +44,10 @@ class Home extends StatelessWidget {
                   .push(MaterialPageRoute(builder: (context) => Favorites()));
             },
           ),
-          IconButton(
-            tooltip: "Pesquisar filme",
-            icon: Icon(
-              Icons.search,
-              color: Colors.white,
-            ),
-            onPressed: () async {
-              String result =
-                  await showSearch(context: context, delegate: MovieSearch());
-              if (result != null) {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => MovieResults(result)));
-              }
-            },
-          )
         ],
       ),
       body: Container(
-        color: Colors.lightBlue[200],
+        color: Colors.green[200],
         child: FutureBuilder<List<MovieModel>>(
           future: MovieService.getMovies(),
           builder: (context, snapshot) {
